@@ -41,6 +41,23 @@ describe Account do
       expect(account.balance).to eql(500)
     end
 
+    it 'adds a transaction to the log' do
+      account.withdraw(500, "14/01/2012")
+      transaction_log = [
+        { date: "10/01/2012",
+          credit: 1000,
+          debit: 0,
+          balance: 1000
+        },
+        { date: "14/01/2012",
+          credit: 0,
+          debit: 500,
+          balance: 500
+        },
+      ]
+      expect(account.transactions).to eql(transaction_log)
+    end
+
   end
 
 end

@@ -23,6 +23,14 @@ class Account
 
   def withdraw(amount, date)
     @balance -= amount
+    @transactions.push(
+      {
+        date: date,
+        credit: 0,
+        debit: amount,
+        balance: @balance
+      }
+    )
   end
 
 end
