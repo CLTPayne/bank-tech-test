@@ -11,6 +11,25 @@ class Account
 
   def deposit(amount, date)
     @balance += amount
+    add_transaction(amount, date, :deposit)
+  end
+
+  def withdraw(amount, date)
+    @balance -= amount
+    add_transaction(amount, date, :withdraw)
+  end
+
+  private
+
+  def add_transaction(amount, date, type)
+    if type === :deposit
+      credit_transaction(amount, date)
+    elsif type === :withdraw
+      debit_transaction(amount, date)
+    end
+  end
+
+  def credit_transaction(amount, date)
     @transactions.push(
       {
         date: date,
@@ -21,8 +40,7 @@ class Account
     )
   end
 
-  def withdraw(amount, date)
-    @balance -= amount
+  def debit_transaction(amount, date)
     @transactions.push(
       {
         date: date,
