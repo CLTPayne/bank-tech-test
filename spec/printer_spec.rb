@@ -8,6 +8,12 @@ describe Printer do
     end
   end
 
+  describe '.header' do
+    it 'returns a statement header' do
+      expect(Printer.header).to eql("date || credit || debit || balance")
+    end
+  end
+
   describe '.to_string' do
     it 'converts a transaction hash into a human readable string' do
       hash = {
