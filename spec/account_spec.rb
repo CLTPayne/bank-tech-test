@@ -10,4 +10,11 @@ describe Account do
     end
   end
 
+  describe '#deposit' do
+    it 'adds a sum to the account balance' do
+      account.deposit(1000, "10/01/2012")
+      expect(account.balance).to eql(1000)
+    end
+  end
+
 end
