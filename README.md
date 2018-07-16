@@ -57,7 +57,7 @@ I want to deposit funds in an account
 
 As a bank customer
 So that I can spend my money
-I want to withdraw funds form an account
+I want to withdraw funds from an account
 
 As a bank customer
 So that I can see how much money I have
