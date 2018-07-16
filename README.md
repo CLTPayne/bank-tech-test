@@ -16,13 +16,17 @@ $ bundle install
 2.5.1 :001 > require './lib/account.rb'
  => true
 2.5.1 :002 > account = Account.new
- => #<Account:0x00007f7f8c00cba8 @balance=0, @transactions=[]>
+ => #<Account:0x00007ff7f30aaa58 @balance=0, @transactions=[]>
 2.5.1 :003 > account.deposit(1000, "10/01/2012")
  => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}]
-2.5.1 :004 > account.transactions
- => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}]
-2.5.1 :005 > account.deposit(2000, "13/01/2012")
+2.5.1 :004 > account.deposit(2000, "13/01/2012")
  => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}, {:date=>"13/01/2012", :credit=>2000, :debit=>0, :balance=>3000}]
+2.5.1 :005 > account.withdraw(500, "14/01/2012")
+ => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}, {:date=>"13/01/2012", :credit=>2000, :debit=>0, :balance=>3000}, {:date=>"14/01/2012", :credit=>0, :debit=>500, :balance=>2500}]
+2.5.1 :006 > require './lib/printer.rb'
+ => true
+2.5.1 :007 > Printer.display_statement(account)
+ => "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00 \n13/01/2012 || 2000.00 || || 3000.00 \n10/01/2012 || 1000.00 || || 1000.00 "
 ```
 
 #### How to run the tests
