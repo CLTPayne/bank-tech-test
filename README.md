@@ -1,8 +1,7 @@
 Bank Tech Test Challenge
 =================
 
-### Quickstart:
-#### How to install the code:
+#### Quickstart:
 Use Ruby 2.5.1
 ```
 $ git clone https://github.com/CLTPayne/bank-tech-test.git
@@ -33,7 +32,6 @@ $ bundle install
 Spec file includes feature tests and unit tests
 All tests are run via ```rspec```
 Code coverage XXXX
-
 
 #### Approach to solving the challenge:
 1. Review app specification and distill into user stories (below)
