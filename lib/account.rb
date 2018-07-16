@@ -21,4 +21,8 @@ class Account
     )
   end
 
+  def withdraw(amount, date)
+    @balance -= amount
+  end
+
 end

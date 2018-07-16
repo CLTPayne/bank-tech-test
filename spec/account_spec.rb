@@ -29,5 +29,18 @@ describe Account do
     end
 
   end
-  
+
+  describe '#withdraw' do
+
+    before(:each) do
+      account.deposit(1000, "10/01/2012")
+    end
+
+    it 'deducts a sum from the account balance' do
+      account.withdraw(500, "14/01/2012")
+      expect(account.balance).to eql(500)
+    end
+
+  end
+
 end
