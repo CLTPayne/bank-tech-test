@@ -2,25 +2,6 @@ require 'statement'
 
 describe Statement do
 
-  describe '.header' do
-    it 'returns a statement header' do
-      expect(Statement.header).to eql("date || credit || debit || balance")
-    end
-  end
-
-  describe '.to_string' do
-    it 'converts a transaction hash into a human readable string' do
-      hash = {
-        date: "10/01/2012",
-        credit: 1000,
-        debit: 0,
-        balance: 1000
-      }
-      transaction = "10/01/2012 || 1000.00 || || 1000.00 "
-      expect(Statement.to_string(hash)).to eql(transaction)
-    end
-  end
-
   describe '.display_statement' do
 
     transaction_log = [

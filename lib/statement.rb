@@ -8,21 +8,27 @@ class Statement
     statement.join("\n")
   end
 
-  def self.header
-    "date || credit || debit || balance"
-  end
+  class << self
 
-  def self.to_string(hash)
-    array = hash.map do |_key, value|
-      if value === 0
-        " "
-      elsif value.kind_of? Integer
-        " " + '%.2f' % value + " "
-      else
-        value + " "
-      end
+    private
+
+    def header
+      "date || credit || debit || balance"
     end
-    array.join("||")
+
+    def to_string(hash)
+      array = hash.map do |_key, value|
+        if value === 0
+          " "
+        elsif value.kind_of? Integer
+          " " + '%.2f' % value + " "
+        else
+          value + " "
+        end
+      end
+      array.join("||")
+    end
+
   end
 
 end
