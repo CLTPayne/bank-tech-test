@@ -2,7 +2,7 @@ class Account
 
   DEFAULT_BALANCE = 0
 
-  attr_accessor :balance, :transactions, :account_history
+  attr_accessor :balance, :account_history
 
   def initialize(account_history = AccountHistory.new)
     @balance = DEFAULT_BALANCE
