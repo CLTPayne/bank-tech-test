@@ -27,14 +27,6 @@ class Statement
           space_format(value)
         end
       end
-      #   if value === 0
-      #     " "
-      #   elsif value.kind_of? Integer
-      #     two_decimal_format(value)
-      #   else
-      #     space_format(value)
-      #   end
-      # end
       transaction_details.join("||")
     end
 
