@@ -17,15 +17,22 @@ describe Account do
     end
 
     it 'adds a transaction to the log' do
+      amount = 1000
+      date = "10/01/2012"
+      type = :deposit
+      balance = 1000
+      account_history = double('account_history', :amount => amount, :date => date, :type => type, :balance => balance)
       account.deposit(1000, "10/01/2012")
       transaction_log = [
-        { date: "10/01/2012",
+        {
+          date: "10/01/2012",
           credit: 1000,
           debit: 0,
           balance: 1000
         }
       ]
-      expect(account.transactions).to eql(transaction_log)
+      allow(account_history).to receive(:add_transaction).once.and_return(transaction_log)
+      expect(account.account_history.transactions).to eql(transaction_log)
     end
 
   end
@@ -42,6 +49,11 @@ describe Account do
     end
 
     it 'adds a transaction to the log' do
+      amount = 500
+      date = "14/01/2012"
+      type = :withdraw
+      balance = 500
+      account_history = double('account_history', :amount => amount, :date => date, :type => type, :balance => balance)
       account.withdraw(500, "14/01/2012")
       transaction_log = [
         { date: "10/01/2012",
@@ -55,7 +67,8 @@ describe Account do
           balance: 500
         },
       ]
-      expect(account.transactions).to eql(transaction_log)
+      allow(account_history).to receive(:add_transaction).once.and_return(transaction_log)
+      expect(account.account_history.transactions).to eql(transaction_log)
     end
 
   end
