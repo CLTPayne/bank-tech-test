@@ -1,4 +1,4 @@
-class Printer
+class Statement
 
   def self.display_statement(transaction_history)
     statement = [header]

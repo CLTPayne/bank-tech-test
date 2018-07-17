@@ -1,10 +1,10 @@
-require 'printer'
+require 'statement'
 
-describe Printer do
+describe Statement do
 
   describe '.header' do
     it 'returns a statement header' do
-      expect(Printer.header).to eql("date || credit || debit || balance")
+      expect(Statement.header).to eql("date || credit || debit || balance")
     end
   end
 
@@ -17,7 +17,7 @@ describe Printer do
         balance: 1000
       }
       transaction = "10/01/2012 || 1000.00 || || 1000.00 "
-      expect(Printer.to_string(hash)).to eql(transaction)
+      expect(Statement.to_string(hash)).to eql(transaction)
     end
   end
 
@@ -46,7 +46,7 @@ describe Printer do
       transaction_history = double('transaction_history', :transactions => transaction_log)
       statement =
       "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00 \n13/01/2012 || 2000.00 || || 3000.00 \n10/01/2012 || 1000.00 || || 1000.00 "
-      expect(Printer.display_statement(transaction_history)).to eql(statement)
+      expect(Statement.display_statement(transaction_history)).to eql(statement)
     end
 
   end
