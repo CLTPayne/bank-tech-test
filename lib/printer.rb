@@ -1,8 +1,8 @@
 class Printer
 
-  def self.display_statement(account)
+  def self.display_statement(transaction_history)
     statement = [header]
-    account.transactions.reverse_each do |transaction|
+    transaction_history.transactions.reverse_each do |transaction|
       statement.push(to_string(transaction))
     end
     statement.join("\n")

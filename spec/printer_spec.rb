@@ -49,10 +49,10 @@ describe Printer do
     ]
 
     it 'displays a tidy history of account transactions' do
-      account = double('account', :balance => 2500, :transactions => transaction_log)
+      transaction_history = double('transaction_history', :transactions => transaction_log)
       statement =
       "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00 \n13/01/2012 || 2000.00 || || 3000.00 \n10/01/2012 || 1000.00 || || 1000.00 "
-      expect(Printer.display_statement(account)).to eql(statement)
+      expect(Printer.display_statement(transaction_history)).to eql(statement)
     end
 
   end
