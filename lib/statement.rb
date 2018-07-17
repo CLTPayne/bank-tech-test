@@ -3,7 +3,7 @@ class Statement
   def self.display_statement(transaction_history)
     statement = [header]
     transaction_history.transactions.reverse_each do |transaction|
-      statement.push(to_string(transaction))
+      statement.push(line_item(transaction))
     end
     statement.join("\n")
   end
@@ -16,17 +16,25 @@ class Statement
       "date || credit || debit || balance"
     end
 
-    def to_string(hash)
-      array = hash.map do |_key, value|
+    def line_item(transaction)
+      transaction_details = transaction.map do |_key, value|
         if value === 0
           " "
         elsif value.kind_of? Integer
-          " " + '%.2f' % value + " "
+          two_decimal_format(value)
         else
-          value + " "
+          space_format(value)
         end
       end
-      array.join("||")
+      transaction_details.join("||")
+    end
+
+    def space_format(value)
+      value + " "
+    end
+
+    def two_decimal_format(value)
+      " " + '%.2f' % value + " "
     end
 
   end
