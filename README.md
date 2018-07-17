@@ -31,7 +31,7 @@ $ bundle install
  => "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00 \n13/01/2012 || 2000.00 || || 3000.00 \n10/01/2012 || 1000.00 || || 1000.00 "
 ```
 
-#### How to run the tests
+#### How to run the tests:
 1. Spec folder includes feature tests and unit tests
 2. All tests are run via ```rspec```
 3. Code coverage is 100%
@@ -45,10 +45,10 @@ $ bundle install
 6. Start with one class
 7. Review SRP to separate concerns and design a object orientated structure
 
-#### Code style
+#### Code style:
 Standard Ruby
 
-#### Code example
+#### Code example:
 ```
 def deposit(amount, date)
   @balance += amount
@@ -61,7 +61,7 @@ def withdraw(amount, date)
 end
 ```
 
-#### Specification
+#### Specification:
 ```
 As a bank customer
 So that I can put money in the bank
@@ -76,7 +76,7 @@ So that I can see how much money I have
 I want to print an account statement
 ```
 
-####Example printed statement:
+#### Example printed statement:
 ```
 date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
