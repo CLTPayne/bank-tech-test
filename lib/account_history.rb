@@ -12,7 +12,7 @@ class AccountHistory
     debit: DEFAULT, balance: DEFAULT)
     @transactions.push(
       {
-        date: date,
+        date: Time.now.strftime("%d/%m/%Y"),
         credit: credit,
         debit: debit,
         balance: balance
