@@ -1,38 +1,19 @@
 class AccountHistory
 
+  DEFAULT_AMOUNT = 0
+
   attr_accessor :transactions
 
   def initialize
     @transactions = []
   end
 
-  def add_transaction(amount, date, type, balance)
-    if type === :deposit
-      credit_transaction(amount, date, balance)
-    elsif type === :withdraw
-      debit_transaction(amount, date, balance)
-    end
-  end
-
-  private
-
-  def credit_transaction(amount, date, balance)
+  def add_transaction(date: date, credit: DEFAULT_AMOUNT, debit: DEFAULT_AMOUNT, balance: DEFAULT_AMOUNT)
     @transactions.push(
       {
         date: date,
-        credit: amount,
-        debit: 0,
-        balance: balance
-      }
-    )
-  end
-
-  def debit_transaction(amount, date, balance)
-    @transactions.push(
-      {
-        date: date,
-        credit: 0,
-        debit: amount,
+        credit: credit,
+        debit: debit,
         balance: balance
       }
     )
