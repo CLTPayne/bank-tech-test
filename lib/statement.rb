@@ -26,7 +26,7 @@ class Statement
           space_format(value)
         end
       end
-        transaction_details.join("||")
+      transaction_details.join("||")
     end
 
     def space_format(value)
