@@ -8,11 +8,11 @@ class AccountHistory
     @transactions = []
   end
 
-  def add_transaction(date: today, credit: DEFAULT,
-    debit: DEFAULT, balance: DEFAULT)
+  def add_transaction(date: date = Time.now.strftime("%d/%m/%Y"),
+    credit: DEFAULT, debit: DEFAULT, balance: DEFAULT)
     @transactions.push(
       {
-        date: Time.now.strftime("%d/%m/%Y"),
+        date: date,
         credit: credit,
         debit: debit,
         balance: balance

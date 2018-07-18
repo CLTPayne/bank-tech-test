@@ -6,7 +6,7 @@ describe AccountHistory do
 
   describe '#add_transaction' do
     it 'adds a transaction to the log' do
-      Time.stub_chain(:now, :strftime).and_return("10/01/2012")
+      allow(Time).to receive_message_chain(:now, :strftime) { "10/01/2012" }
       transaction_log = [
         {
           date: "10/01/2012",
