@@ -9,14 +9,14 @@ class Account
     @account_history = account_history
   end
 
-  def deposit(amount, date)
+  def deposit(amount)
     @balance += amount
-    account_history.add_transaction(date: date, credit: amount, balance: @balance)
+    account_history.add_transaction(credit: amount, balance: @balance)
   end
 
-  def withdraw(amount, date)
+  def withdraw(amount)
     @balance -= amount
-    account_history.add_transaction(date: date, debit: amount, balance: @balance)
+    account_history.add_transaction(debit: amount, balance: @balance)
   end
 
 end

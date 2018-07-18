@@ -1,6 +1,6 @@
 class AccountHistory
 
-  DEFAULT_AMOUNT = 0
+  DEFAULT = 0
 
   attr_accessor :transactions
 
@@ -8,10 +8,10 @@ class AccountHistory
     @transactions = []
   end
 
-  def add_transaction(date: date, credit: DEFAULT_AMOUNT, debit: DEFAULT_AMOUNT, balance: DEFAULT_AMOUNT)
+  def add_transaction(credit: DEFAULT, debit: DEFAULT, balance: DEFAULT)
     @transactions.push(
       {
-        date: date,
+        date: Time.now.strftime("%d/%m/%Y"),
         credit: credit,
         debit: debit,
         balance: balance
