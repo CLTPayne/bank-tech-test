@@ -18,16 +18,15 @@ class Statement
 
     def line_item(transaction)
       transaction_details = transaction.map do |_key, value|
-        case value
-        when 0
+        if value === 0
           " "
-        when Fixnum
+        elsif value.kind_of? Integer
           two_decimal_format(value)
-        when String
+        else
           space_format(value)
         end
       end
-      transaction_details.join("||")
+        transaction_details.join("||")
     end
 
     def space_format(value)
