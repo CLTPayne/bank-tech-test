@@ -1,3 +1,6 @@
+require_relative 'account_history'
+require_relative 'statement'
+
 class Account
 
   DEFAULT_BALANCE = 0
@@ -12,13 +15,13 @@ class Account
   def deposit(amount, date)
     @balance += amount
     account_history.add_transaction(date: date,
-      credit: amount, balance: @balance)
+      credit: amount, balance: balance)
   end
 
   def withdraw(amount, date)
     @balance -= amount
     account_history.add_transaction(date: date,
-      debit: amount, balance: @balance)
+      debit: amount, balance: balance)
   end
 
 end
