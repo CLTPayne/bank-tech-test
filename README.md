@@ -15,19 +15,15 @@ $ bundle install
 ```
 2.5.1 :001 > require './lib/account.rb'
  => true
-2.5.1 :002 > require './lib/account_history.rb'
- => true
-2.5.1 :003 > require './lib/statement.rb'
- => true
-2.5.1 :004 > account = Account.new
- => #<Account:0x00007fc762207e80 @balance=0, @account_history=#<AccountHistory:0x00007fc762207e58 @transactions=[]>>
-2.5.1 :005 > account.deposit(1000, "10/01/2012")
+2.5.1 :002 > account = Account.new
+ => #<Account:0x00007ff8a11e38a8 @balance=0, @account_history=#<AccountHistory:0x00007ff8a11e3880 @transactions=[]>>
+2.5.1 :003 > account.deposit(1000, "10/01/2012")
  => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}]
-2.5.1 :006 > account.deposit(2000, "13/01/2012")
+2.5.1 :004 > account.deposit(2000, "13/01/2012")
  => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}, {:date=>"13/01/2012", :credit=>2000, :debit=>0, :balance=>3000}]
-2.5.1 :007 > account.withdraw(500, "14/01/2012")
+2.5.1 :005 > account.withdraw(500, "14/01/2012")
  => [{:date=>"10/01/2012", :credit=>1000, :debit=>0, :balance=>1000}, {:date=>"13/01/2012", :credit=>2000, :debit=>0, :balance=>3000}, {:date=>"14/01/2012", :credit=>0, :debit=>500, :balance=>2500}]
-2.5.1 :008 > Statement.display_statement(account.account_history)
+2.5.1 :006 > Statement.display_statement(account.account_history)
  => "date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00 \n13/01/2012 || 2000.00 || || 3000.00 \n10/01/2012 || 1000.00 || || 1000.00 "
 ```
 
@@ -52,13 +48,14 @@ Standard Ruby
 ```
 def deposit(amount, date)
   @balance += amount
-  account_history.add_transaction(amount, date, :deposit, balance)
+  account_history.add_transaction(date: date,
+    credit: amount, balance: balance)
 end
 
 def withdraw(amount, date)
   @balance -= amount
-  account_history.add_transaction(amount, date, :withdraw, balance)
-end
+  account_history.add_transaction(date: date,
+    debit: amount, balance: balance)
 ```
 
 #### Specification:
